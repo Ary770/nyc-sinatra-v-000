@@ -1,0 +1,16 @@
+<form action="/figures" method="post">
+  <p>Create Figure:</p>
+    <input type="text" name="figure[name]" id="" >
+
+  <p>Create or Select Landmark:</p>
+    <input type="text" name="landmark[name]" id="">
+    <% @landmarks.each do |l|%>
+      <input type="checkbox" name="figure[landmark_ids][]" value="<%=l.id%>" id="<%=l.id%>"><%=l.name%></input>
+    <% end %>
+
+  <p>Create or Select Title:</p>
+    <input type="text" name="title[name]" id="">
+    <% @titles.each do |t|%>
+      <input type="checkbox" name="figure[title_ids][]" value="<%=t.id%>" id="<%=t.id%>"><%=t.name%></input>
+    <% end %>
+</form>
