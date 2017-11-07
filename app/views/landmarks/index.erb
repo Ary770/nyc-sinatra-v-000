@@ -1,0 +1,10 @@
+<h2>Landmarks:</h2>
+
+ <%@landmarks.each do |l|%>
+  <ul>
+    <li><%=l.name%></li>
+      <ul>
+        <li><%=l.year_completed%></li>
+      </ul>
+  </ul>
+ <%end%>

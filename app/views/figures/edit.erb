@@ -2,9 +2,11 @@
 
 <h3><%=@figure.name%></h3>
 
-<form action="/figures/show" method="post">
+<form action="/figures/<%=@figure.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
   <p>Figure Name:</p>
-  <input type="text" value="<%=@figure.name%> " name="figure[name]" id="figure_name" >
+  <input type="text" name="figure[name]" id="figure_name" >
 
   <p>Create or Select Landmark:</p>
     <input type="text" name="landmark[name]" id="new_landmark">
@@ -17,9 +19,9 @@
     <input type="text" name="title[name]" id="new_title">
     <br>
     <% @titles.each do |t|%>
-      <input type="checkbox" name="figure[title_ids][]" value="<%=t.id%>" id="title_<%=t.id%>" <%='checked' if @figure.titles.include?(t) %><%=t.name%></input>
+      <input type="checkbox" name="figure[title_ids][]" value="<%=t.id%>" id="title_<%=t.id%>" ><%=t.name%></input>
     <% end %>
 
-    <p><input type="submit" value="Create New Figure"></p>
+    <p><input type="submit" value="Edit Figure"></p>
 
 </form>
