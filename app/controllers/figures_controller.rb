@@ -11,17 +11,34 @@ class FiguresController < ApplicationController
     figure = Figure.new(name: params[:figure][:name])
 
     if !params[:landmark][:name].empty?
-      figure.build_landmark(params[:landmark])
+      figure.landmarks.build(params[:landmark])
     elsif params[:figure][:landmark_ids]
       figure.landmark_ids = (params[:figure][:landmark_ids])
     end
 
     if !params[:title][:name].empty?
-      figure.build_title(params[:title])
+      figure.titles.build(params[:title])
     else params[:figure][:title_ids]
       figure.title_ids = (params[:figure][:title_ids])
     end
     figure.save
+
+    redirect to :"/figures/#{figure.id}"
+  end
+
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    erb :'/figures/show'
+  end
+
+  get '/figures' do
+    @figures = Figure.all
+    erb :"/figures/figures"
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :"figures/edit"
   end
 
 end

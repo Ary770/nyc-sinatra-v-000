@@ -8,13 +8,13 @@
     <% @landmarks.each do |l|%>
       <input type="checkbox" name="figure[landmark_ids][]" value="<%=l.id%>" id="landmark_<%=l.id%>"><%=l.name%></input>
     <% end %>
- 
+
   <p>Create or Select Title:</p>
-    <input type="text" name="title[name]" id="new_title">
+    <input type="text" name="title[name]" id="new_title"> 
     <br>
     <% @titles.each do |t|%>
       <input type="checkbox" name="figure[title_ids][]" value="<%=t.id%>" id="title_<%=t.id%>"><%=t.name%></input>
     <% end %>
-    
+
     <p><input type="submit" value="Create New Figure"></p>
 </form>
