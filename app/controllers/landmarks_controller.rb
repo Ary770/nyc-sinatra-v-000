@@ -26,7 +26,7 @@ class LandmarksController < ApplicationController
     erb :"/landmarks/edit"
   end
 
-  post '/landmarks/:id' do
+  patch '/landmarks/:id' do
     landmark = Landmark.find(params[:id])
     landmark.update(params[:landmark])
     
